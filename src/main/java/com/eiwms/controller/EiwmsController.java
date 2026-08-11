@@ -59,4 +59,14 @@ public class EiwmsController {
 		
 		return "Successfully Employee Deleted from Database";
 	}
+	
+	// for testing the generic exception handler
+	
+	/*
+	@GetMapping("/test-exception")
+	public String testException() {
+		
+		throw new RuntimeException("Test exception");
+	}
+	*/
 }
