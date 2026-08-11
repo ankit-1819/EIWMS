@@ -1,11 +1,11 @@
 package com.eiwms.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.eiwms.entity.Employee;
+import com.eiwms.exception.EmployeeNotFoundException;
 import com.eiwms.repository.EmployeeRepository;
 
 @Service
@@ -32,9 +32,9 @@ public class EmployeeService {
 	}
 	
 	//get employee by Id
-	public Optional<Employee> getEmployeeById(Long id){
-		
-		return employeeRepository.findById(id);
+	public Employee getEmployeeById(Long id) {
+	    return employeeRepository.findById(id)
+	            .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
 	}
 	
 	//update employee
