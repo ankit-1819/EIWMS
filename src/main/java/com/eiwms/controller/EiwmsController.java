@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.eiwms.entity.Employee;
 import com.eiwms.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/eiwms")
 public class EiwmsController {
@@ -29,7 +31,7 @@ public class EiwmsController {
 
 
 	@PostMapping
-	public Employee addEmployee(@RequestBody Employee employee) {
+	public Employee addEmployee(@Valid @RequestBody Employee employee) {
 		
 		return employeeService.addEmployee(employee);
 	}

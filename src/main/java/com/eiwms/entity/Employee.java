@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name = "employees")
@@ -13,11 +17,22 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "Name is required")
 	private String name;
+	
+	@Email(message = "Invalid email")
 	private String email;
+	
+	@NotBlank(message = "Department is required")
 	private String department;
+	
+	@NotBlank(message = "Designation is required")
 	private String designation;
-	private double salary;
+	
+	@NotNull(message = "Salary is required")
+	@Positive(message = "Salary must be greater than 0")
+	private Double salary;
 	
 	public String getName() {
 		return name;
@@ -51,11 +66,11 @@ public class Employee {
 		this.designation = designation;
 	}
 	
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 	
-	public void setSalary(double salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 	
@@ -63,6 +78,6 @@ public class Employee {
 		return id;
 	}
 	
-	
+
 	
 }
