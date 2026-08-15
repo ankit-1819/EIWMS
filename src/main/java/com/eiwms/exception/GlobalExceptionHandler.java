@@ -30,6 +30,9 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleGenericException(Exception ex){
 		
+		// for developer only whats the real exception
+		//ex.printStackTrace();
+		
 		ErrorResponse errorResponse = new ErrorResponse(
 				
 				"Something Went Wrong",
